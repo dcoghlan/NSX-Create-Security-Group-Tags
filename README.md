@@ -23,8 +23,8 @@ optional arguments:
   -i inputfile  Input file in csv format
   -d            Enable script debugging
 ```
-##Example
-An example to run the script
+
+To run the script
 ```
-python nsx-create-sg-tags.pyy -s nsxmgr-l-01a.corp.local -i inputfile.csv
+python nsx-create-sg-tag.py -s nsxmgr-l-01a.corp.local -i inputfile.csv
 ```
