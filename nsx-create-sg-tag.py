@@ -229,15 +229,15 @@ with open('%s' % _inputfile, 'r+') as _csvinput:
             elif _type == 'C':
                 _desc_type = ' - Clients'
 			# Lookup security tags to see if it already exists
-            _check_sec_tag_id = f_get_stid('ST.' + _type + '-' + _name)
+            _check_sec_tag_id = f_get_stid('ST-' + _type + '.' + _name)
 			# If security tag doesn't exists
             if _check_sec_tag_id is None:
 				# Create the new security tag
-                print("Need to create security tag | ST." + _type + "-" + _name)
-                _sec_tag_id = f_create_sec_tag('ST.' + _type + '-' + _name, _desc + _desc_type)
+                print("Need to create security tag | ST-" + _type + "." + _name)
+                _sec_tag_id = f_create_sec_tag('ST-' + _type + '.' + _name, _desc + _desc_type)
 				# If something goes wrong creating security tag, log it in debug file and pass the rest of the processing
                 if _sec_tag_id is None:
-                    print("ERROR creating | ST." + _type + "-" + _name + " - Check log file")
+                    print("ERROR creating | ST-" + _type + "." + _name + " - Check log file")
                     print()
                     _exceptions += 1
                     continue
@@ -247,22 +247,22 @@ with open('%s' % _inputfile, 'r+') as _csvinput:
                 _sec_tag_id = _check_sec_tag_id
 	
             # Lookup security groups to see if it already exists
-            _check_sec_group_id = f_get_sgid('SG.' + _type + '-' + _name)
+            _check_sec_group_id = f_get_sgid('SG-' + _type + '.' + _name)
 			# If security group doesn't exists
             if _check_sec_group_id is None:
 				# Create the new security group
-                print("Need to create security group | SG." + _type + "-" + _name)
-                _sec_group_id = f_create_sec_group('SG.' + _type + '-' + _name, _desc + _desc_type, _sec_tag_id)
+                print("Need to create security group | SG-" + _type + "." + _name)
+                _sec_group_id = f_create_sec_group('SG-' + _type + '.' + _name, _desc + _desc_type, _sec_tag_id)
 				# If something goes wrong creating security tag, log it in debug file and pass the reset of the processing
                 if _sec_group_id is None:
-                    print("ERROR creating | SG." + _type + "-" + _name + " - Check debug file")
+                    print("ERROR creating | SG-" + _type + "." + _name + " - Check debug file")
                     print()
                     _exceptions += 1
                     continue
 			# So it seems the security group exists, so lets use the existing security group object id
             else:
                 print("Security group exists - " + _check_sec_group_id)
-                print("Add ST." + _type + "-" + _name + " to security group manually")
+                print("Add ST-" + _type + "." + _name + " to security group manually")
                 _exceptions += 1
                 pass
 
