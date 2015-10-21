@@ -28,3 +28,16 @@ To run the script
 ```
 python nsx-create-sg-tag.py -s nsxmgr-l-01a.corp.local -i inputfile.csv
 ```
+
+The format of the input file is as follows:
+```
+application,description
+```
+
+An example of an input file
+```
+SCOM, System Center Operations Manager
+Solarwinds SNMP, Monitoring via SNMP
+Active DIrectory,Windows Active Directory
+NFS,Main NFS Services
+```
